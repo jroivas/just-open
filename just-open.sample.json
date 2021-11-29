@@ -1,0 +1,26 @@
+{
+    "runners": {
+        "text/plain": ["vim"],
+        "text/x-c": ["vim"],
+        "text/x-python": ["vim"],
+        "text/x-script.python": ["vim"],
+
+        "video/*": ["vlc"],
+
+        "image/*": ["eog"],
+
+        "inode/directory": ["find", "$F", "-type", "f"],
+
+        "application/pdf": "evince",
+        "application/zip": ["file-roller"],
+        "application/gzip": ["file-roller"],
+        "application/x-lzh-compressed": ["file-roller"],
+        "application/x-xz": ["file-roller"],
+
+        "application/x-dia": "dia"
+    },
+    "extmap": {
+        "dia": "application/x-dia"
+    }
+}
+
