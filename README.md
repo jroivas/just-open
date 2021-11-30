@@ -4,7 +4,7 @@ Simple, configurable script to open files.
 
 One can just give any file as a parameter, and it's then opened in the
 preferred application.
-It's configurable, so one can define their favourite apps,
+It's configurable, so one can define their favorite apps,
 and just open the files like they want.
 
 ## Requirements
@@ -33,8 +33,8 @@ see [just-open.sample.json](just-open.sample.json) for example.
 
 ### Runners
 
-First "runners" should have mimetypes mapped for application or command.
-The mimetype should be JSON string just like "text/plain".
+First "runners" should have mime types mapped for application or command.
+The mime type should be JSON string just like "text/plain".
 Command should be string or list. For example:
 
     "runners": {
@@ -51,7 +51,7 @@ Then all files that are detected to be "inode/directory" are opened as:
 
     ls -la --color=tty filename
 
-In case the filename should not be the last, use "$F" which is expaned to be
+In case the filename should not be the last, use "$F" which is expanded to be
 the filename:
 
     "runners": {
@@ -69,15 +69,15 @@ Extmap maps simply extension to a mime type. This is simple string to string
 mapping.  Extensions are split on every dot, and all possibilities are tried,
 thus test.tar.gz will be tested first for "tar.gz" and then for "gz".
 
-If there's a match in "extmap", the matchin mimetype is used.  After that
-the mimetype is searched from the "runners" list. If there's no specification
+If there's a match in "extmap", the matching mime type is used.  After that
+the mime type is searched from the "runners" list. If there's no specification
 for it, fallback method is used to open the file.
 
 ### Fallback
 
 Fallback method for now is "xdg-open" which should utilize proper system
 configuration to open the file. This behaves similarly than clicking the file
-in (graphical) file browser. For non-graphicals enviroment this might not work
+in (graphical) file browser. For non-graphical environment this might not work
 and the method fails.
 
 ## Installation
