@@ -24,7 +24,6 @@ def expandFileName(name):
 
 
 def loadConfig(conf, runners, extmap):
-
     try:
         with open(expandFileName(conf)) as fd:
             cfg = json.loads(fd.read())
@@ -202,13 +201,10 @@ def fallbackRunner(fname):
         sys.stderr.write('ERROR: Can\'t find runner for %s\n' % fname)
 
 
-if __name__ == '__main__':
-    if len(sys.argv) <= 1:
-        print('Usage: %s file' % sys.argv[0])
-        sys.exit(1)
+def openFile(fname):
+    global runners, extmap
 
-    fn = expandFileName(sys.argv[1])
-    runners, extmap = loadConfig('~/.just-open.json', runners, extmap)
+    fn = expandFileName(fname)
 
     ok = False
     ft = detect(fn)
@@ -220,3 +216,17 @@ if __name__ == '__main__':
 
     if not ok:
         fallbackRunner(fn)
+
+
+if __name__ == '__main__':
+    if len(sys.argv) <= 1:
+        print('Usage: %s file' % sys.argv[0])
+        sys.exit(1)
+
+    runners, extmap = loadConfig('~/.just-open.json', runners, extmap)
+    i = 1
+    largs = len(sys.argv)
+
+    while i < largs:
+        openFile(sys.argv[i])
+        i += 1
